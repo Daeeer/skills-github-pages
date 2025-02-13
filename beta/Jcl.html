@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <title>关于我们_常亮数字集团-让商业变得更简单</title>
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <link rel="stylesheet" type="text/css" href="/skin/css/default.css" />
+  <link rel="stylesheet" type="text/css" href="/skin/css/jquery.fullpage.css" />
+  <link rel="stylesheet" type="text/css" href="/skin/css/prettyphoto.css" />
+  <link rel="stylesheet" type="text/css" href="/skin/css/global.css" />
+  <link rel="stylesheet" type="text/css" href="/skin/css/resize.css" />
+  <!--[if lt IE 7]>
+        <link rel="stylesheet" type="text/css" href="/skin/css/ie6.css" media="screen, projection" />
+        <![endif]-->
+  <!--[if lt IE 8]>
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+        <link rel="stylesheet" type="text/css" href="/skin/css/ie.css" media="screen, projection" />
+        <![endif]-->
+  <script type="text/javascript" src="/skin/js/jquery.js"></script>
+  <script type="text/javascript" src="/skin/js/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="/skin/js/jquery.caroufredsel-6.2.1.js"></script>
+  <script type="text/javascript" src="/skin/js/lodash.compat.min.js"></script>
+  <script type="text/javascript" src="/skin/js/jquery.icheck.min.js"></script>
+  <script type="text/javascript" src="/skin/js/highcharts.js"></script>
+  <script type="text/javascript" src="/skin/js/exporting.js"></script>
+  <script type="text/javascript" src="/skin/js/modernizr.custom.min.js"></script>
+  <script type="text/javascript" src="/skin/js/jquery.shuffle.js"></script>
+  <script type="text/javascript" src="/skin/js/page.js"></script>
+  <script type="text/javascript" src="/skin/js/evenheights.js"></script>
+  <script type="text/javascript" src="/skin/js/viewport.js"></script>
+  <script type="text/javascript" src="/skin/js/jquery.mousewheel.js"></script>
+  <script type="text/javascript" src="/skin/js/jquery.simplr.smoothscroll.min.js"></script>
+  <script type="text/javascript" src="/skin/js/waypoints.min.js"></script>
+  <script type="text/javascript" src="/skin/js/webfoss.preloader.js"></script>
+  <script type="text/javascript" src="/skin/js/jquery.fullpage.js"></script>
+  <script type="text/javascript" src="/skin/js/webfoss.fullscreenstage.js"></script>
+  <script type="text/javascript" src="/skin/js/jquery.prettyphoto.js"></script>
+  <script type="text/javascript" src="/skin/js/jquery.minaa.js"></script>
+  <script type="text/javascript" src="/skin/js/jquery.waypoints.min.js"></script>
+  <script type="text/javascript" src="/skin/js/jquery.countup.min.js"></script>
+</head>
+
+<body class="action--site-about controller--site">
+  <div class="container" id="page">
+    <div class="nav-toggle">
+      <div class="icon"></div>
+    </div>
+    <div class="pageinner">
+      <div class="shadow"></div>
+      <div id="headerBox1" class="headerBox">
+        <div class='header'> <a href="/" class="logo"><img src='C:\Users\陈力聚\Desktop\about.jpg'></a>
+          <ul class='nav'>
+            <li class='active current'><a href='/'>首页<br />
+                首页</a></li>
+            <li><a href='/about/'>关于我们<br />
+                关于我们</a></li>
+            <li><a href='/service/'>产品服务<br />
+                产品服务</a></li>
+            <li><a href='/news/'>新闻中心<br />
+                新闻中心</a></li>
+            <li><a href='/hezuo/'>合作客户<br />
+                合作客户</a></li>
+            <li><a href='/plus/list.php?tid=19'>加入我们<br />
+                加入我们</a></li>
+          </ul>
+          <!--<div class='line'></div>-->
+        </div>
+      </div>
+      <div id="headerBox2" class="headerBox">
+        <div class='header'> <a href="/" class="logo"><img src='/skin/images/logo2.png'></a>
+          <ul class='nav'>
+            <li class='active current'><a href='/'>首页<br />
+                首页</a></li>
+            <li><a href='/about/'>关于我们<br />
+                关于我们</a></li>
+            <li><a href='/service/'>产品服务<br />
+                产品服务</a></li>
+            <li><a href='/news/'>新闻中心<br />
+                新闻中心</a></li>
+            <li><a href='/hezuo/'>合作客户<br />
+                合作客户</a></li>
+            <li><a href='/plus/list.php?tid=19'>加入我们<br />
+                加入我们</a></li>
+          </ul>
+          <!--<div class='line'></div>-->
+        </div>
+      </div>
+
+      <script>
+
+        var $width = $('.headerBox .nav li.active a').width();
+        var $left = $('.headerBox .nav li.active a').position().left;
+        $('.headerBox .line').stop().animate({ 'left': $left, 'width': $width });
+
+        $('.headerBox .nav li a').mouseenter(function () {
+          var $width = $(this).width();
+          var $left = $(this).position().left;
+          $('.headerBox .line').stop().animate({ 'left': $left, 'width': $width });
+        });
+        $('.headerBox .nav li a').mouseleave(function () {
+          var $width = $('.headerBox .nav li.active a').width();
+          var $left = $('.headerBox .nav li.active a').position().left;
+          $('.headerBox .line').stop().animate({ 'left': $left, 'width': $width });
+        });
+
+        $('.headerBox .nav li').mouseenter(function () {
+          $(this).children('a').stop().animate({ 'marginTop': '0px' }, 'slow', 'swing');
+        });
+        $('.headerBox .nav li').mouseleave(function () {
+          $(this).children('a').stop().animate({ 'marginTop': '-79px' }, 'slow', 'swing');
+        });
+
+      </script>
+      <div id='bannerin'> <img src='/skin/images/about.jpg' />
+        <div class='text'>
+          <h1>关于我们</h1>
+          <p>用心做好每一个客户，致力于数字化营销服务，让商业更简单！<br>
+            不忘初心，方得始终</p>
+        </div>
+      </div>
+      <div id='breadcrumbs'>
+        <ul>
+
+          <li><a href='/about/aabout/'>公司简介</a></li>
+
+          <li><a href='/plus/list.php?tid=39'>使命愿景</a></li>
+
+          <li><a href='/about/fazhan/'>发展历程</a></li>
+
+          <li><a href='/about/about/zzjg/'>组织架构</a></li>
+
+          <li><a href='/about/acontact/'>联系我们</a></li>
+
+          <div class='iconbread'></div>
+        </ul>
+      </div>
+      <script>
+        var $width = $('#breadcrumbs li.active').width() / 2;
+        var $left = $('#breadcrumbs li.active').position().left;
+        var left = $left + $width - 12;
+        $('#breadcrumbs .iconbread').stop().animate({ 'left': left });
+
+        $('#breadcrumbs li').mouseenter(function () {
+          var $width = $(this).width() / 2;
+          var $left = $(this).position().left;
+          var left = $left + $width - 12;
+          $('#breadcrumbs .iconbread').stop().animate({ 'left': left });
+        });
+        $('#breadcrumbs li').mouseleave(function () {
+          var $width = $('#breadcrumbs li.active').width() / 2;
+          var $left = $('#breadcrumbs li.active').position().left;
+          var left = $left + $width - 12;
+          $('#breadcrumbs .iconbread').stop().animate({ 'left': left });
+        });
+
+      </script>
+
+
+      <div class="about_bga">
+        <div class="kga">
+          <div class="aboa_top">
+            <div class="aboa_l">
+              <div class="aboa_bt">
+                <h3>致力于<span>互联网数字化营销服务</span></h3>
+                <p>准则：让商业变得更简单！</p>
+              </div>
+              <div class="aboa_ms">
+                <p>常亮集团始于2009年，是一家已经营13年的技术型公司。</p>
+                <p>公司拥有员工500余人，办公面积近8000平米，省政府重点培养的电商和文化创优服务示范企业。</p>
+                <p>与主流电商、互联网及新媒体厂商包括：阿里巴巴、巨量引擎（今日头条、抖音）、京东、快手、腾讯、<br>知乎、B站、小红书、百度等都达成了合作，构建了集团强大的数字化营销服务生态。</p>
+                <p>自公司成立以来，一直秉着：致力于帮助传统企业网络营销落地的初心理念。</p>
+                <p>从企业品牌设计到网络营销推广，一站式帮助企业通过互联网获取订单，提升企业品牌知名度。</p>
+              </div>
+            </div>
+            <div class="aboa_r">
+              <p>13</p><span>year</span>
+            </div>
+          </div>
+          <div class="abo_bom">
+            <ul>
+              <li>
+                <div class="aboa_sz">
+                  <p>2000</p><span>+</span>
+                </div>
+                <div class="aboa_sm">累计服务上千家客户</div>
+              </li>
+              <li>
+                <div class="aboa_sz">
+                  <p>500</p><span>人</span>
+                </div>
+                <div class="aboa_sm">强大的团队</div>
+              </li>
+              <li>
+                <div class="aboa_sz">
+                  <p>8000</p><span>+</span>
+                </div>
+                <div class="aboa_sm">集团办公场地</div>
+              </li>
+
+            </ul>
+          </div>
+          <script>
+            jQuery(".aboa_sz p").countUp();
+          </script>
+        </div>
+      </div>
+
+      <div class="about_bgc">
+        <div class="kga">
+          <div class="aboc_bt">常亮拥有一批经验丰富、业界资深技术人员和<br>高素质的营销策划人员</div>
+          <div class="aboc_ms">
+            <p>优秀的管理运营团队，用高水准的技术水平与创造为广大客户服务提供定制化服务。</p>
+            <p>服务项目：高端电商平台开发，网站推广， 阿里巴巴代运营，外贸推广，短视频策划，直播电商</p>
+            <p>合作伙伴：阿里巴巴、今日头条、抖音、京东、快手、腾讯、知乎、B站、小红书、百度</p>
+          </div>
+        </div>
+      </div>
+      <!--about_bgc-->
+
+      <!--
+<div class="about_culture"></div>
+-->
+
+
+      <div id='footerBox'>
+        <div class='footermap'>
+          <ul class='column1'>
+            <h1><a href='/about/'>关于我们</a></h1>
+
+            <li><a href='/about/aabout/'>公司简介</a></li>
+
+            <li><a href='/plus/list.php?tid=39'>使命愿景</a></li>
+
+            <li><a href='/about/fazhan/'>发展历程</a></li>
+
+            <li><a href='/about/about/zzjg/'>组织架构</a></li>
+
+            <li><a href='/about/acontact/'>联系我们</a></li>
+
+          </ul>
+          <ul class='column2'>
+            <h1><a href='/news/'>新闻中心</a></h1>
+
+            <li><a href='/news/qiye/'>企业新闻</a></li>
+
+            <li><a href='/news/meiti/'>领导关怀</a></li>
+
+          </ul>
+          <ul class='column3'>
+            <h1><a href='/service/'>产品服务</a></h1>
+
+            <li><a href='/service/ali/'>电商开发</a></li>
+
+            <li><a href='/service/web/'>网站建设</a></li>
+
+            <li><a href='http://www.cnjdcm.cn'>新媒体推广</a></li>
+
+          </ul>
+
+
+
+          <ul class='column4'>
+            <h1><a href='/plus/list.php?tid=19'>加入我们</a></h1>
+
+            <li><a href='/plus/list.php?tid=41'>企业风采</a></li>
+
+            <li><a href='/contact/job/'>招贤纳士</a></li>
+
+            <li><a href='/acontact/'>联系我们</a></li>
+
+          </ul>
+
+          <ul class='column5'>
+            <h1><a href="/">直属公司</a></h1>
+
+            <li><a href="http://www.cnzso.com/" target="_blank">江苏整搜</a></li>
+            <li><a href="http://www.icoolidea.net/" target="_blank">酷点科技</a></li>
+            <li><a href="http://www.cnjdcm.cn/" target="_blank">江苏焦点</a></li>
+
+          </ul>
+
+        </div>
+        <p class='copy'>Copyright &copy; 2022 常亮数字集团 版权所有 <a href="https://beian.miit.gov.cn/" target="_blank"
+            rel="nofollow">苏ICP2022018962</a> <a href="/sitemap.xml" target="_blank">XML地图</a></p>
+      </div>
+
+    </div>
+    <!-- pageinner -->
+
+    <ul class="grid">
+      <li id="sideli" class="three">
+        <ul class="sidenav">
+          <li class='active current'><a href='/'>首页</a></li>
+          <li class='hover'><a href='/about/'><span>关于我们</span></a></li>
+          <li class=''><a href='/service/'>产品服务</a></li>
+
+          <li class=''><a href='/news/'>新闻中心</a></li>
+
+          <li class=''><a href='/hezuo/'>合作客户</a></li>
+
+          <li class=''><a href='/plus/list.php?tid=19'>加入我们</a></li>
+
+        </ul>
+      </li>
+    </ul>
+    <script>
+      $(".nav-toggle").click(function () {
+        $("#sideli").toggleClass("sideclk");
+        $("body").toggleClass("sideopen");
+      });
+      $(".shadow").click(function () {
+        $("#sideli").toggleClass("sideclk");
+        $("body").toggleClass("sideopen");
+      });
+    </script>
+  </div>
+  <!-- page -->
+
+  <script>
+    var beforeload = function () {
+
+
+    };
+    var onAllLoad = function () {
+      $('body').waypoint(function (dir) {
+        if (dir === 'down') {
+          $("#headerBox1").stop().animate({ 'top': '-80px' });
+          $("#headerBox2").stop().animate({ 'top': '0px' });
+        } else {
+          $("#headerBox2").stop().animate({ 'top': '-80px' });
+          $("#headerBox1").stop().animate({ 'top': '0px' });
+        }
+      }, { 'offset': -50 });
+    };
+    var preload = function () {
+      beforeload();
+      $('#page').bind('preloadfinish', onAllLoad).preloader();
+    };
+    preload();
+  </script>
+</body>
+
+</html>

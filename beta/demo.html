@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>常亮电商发展 - 电商产业带运营好管家</title>
+  <link rel="icon" type="image/png" href="常亮logo1.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* 动画样式 */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes modalEntry {
+      from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.9);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
+    .animate-fadein {
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .nav-blur {
+      backdrop-filter: blur(10px);
+    }
+
+    /* 视频缩放相关样式 */
+    .video-wrapper {
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    #scaling-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform-origin: top center;
+      transition: transform 0.2s cubic-bezier(0.33, 0.85, 0.56, 1);
+      will-change: transform;
+      /* 性能优化 */
+    }
+
+    .content-section {
+      margin-top: 100vh;
+      position: relative;
+      z-index: 1;
+      background: #18181b;
+    }
+
+    .service-dialog {
+      display: none;
+      right: 100px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    .service-dialog.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    #serviceModal {
+      transition: opacity 0.3s ease;
+      z-index: 100;
+      cursor: pointer;
+    }
+
+    .modal-content {
+      animation: modalEntry 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      transition: transform 0.2s;
+    }
+
+    /* 添加关闭按钮悬浮动画 */
+    #serviceModal button:hover {
+      /*transform: rotate(90deg) scale(1.1);*/
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* 添加卡片悬停动画 */
+    .service-card {
+      transition: all 0.3s ease;
+      box-shadow: 0 0 rgba(0, 0, 0, 0);
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    #getQuoteBtn {
+      transition: background-color 0.2s ease;
+    }
+
+    /* 微信二维码弹窗样式 */
+    #quoteQRPopup {
+      display: none;
+      position: absolute;
+      top: 45%;
+      left: 30%;
+      bottom: 40px;
+
+      background: white;
+      padding: 12px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+    }
+
+    #quoteQRPopup img {
+      width: 180px;
+      height: 180px;
+      object-fit: contain;
+    }
+  </style>
+</head>
+
+<body class="bg-neutral-900 text-gray-100">
+  <!-- 导航栏 -->
+  <nav class="fixed w-full top-0 z-50 nav-blur bg-black/80">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-semibold">
+        <img src="常亮logo-白.png" width="200" height="50">
+      </h1>
+      <a href="#register" class="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-full transition-all">立即注册</a>
+    </div>
+  </nav>
+
+  <!-- 视频容器 -->
+  <div class="video-wrapper">
+    <video id="scaling-video" controls autoplay muted loop>
+      <source src="常亮宣传片.m4v" type="video/mp4">
+      您的浏览器不支持视频播放。
+    </video>
+  </div>
+
+  <!-- 主内容区域 -->
+  <main class="content-section max-w-6xl mx-auto px-4 pt-20 pb-32 space-y-20">
+    <!-- 注册模块 -->
+    <section id="register" class="pt-28 animate-fadein">
+      <div class="text-center space-y-6">
+        <h2 class="text-5xl font-bold mb-6">结果至上，转化为先</h2>
+        <form id="registerForm" class="max-w-md mx-auto space-y-4" onsubmit="handleSubmit(event)">
+          <input type="text" placeholder="怎么称呼您" class="w-full px-4 py-3 bg-neutral-800 rounded-lg" required>
+          <input type="tel" pattern="[0-9]{11}" placeholder="请输入手机号码" class="w-full px-4 py-3 bg-neutral-800 rounded-lg"
+            required>
+          <input type="text" placeholder="请输入公司名称" class="w-full px-4 py-3 bg-neutral-800 rounded-lg" required
+            minlength="6">
+          <table align="center" border="1" cellpadding="10" cellspacing="0" class="w-full bg-neutral-800 rounded-lg">
+            <tr class="space-y-4">
+              <td style="text-align: center;" width="275">
+                <button type="submit"
+                  class="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-lg transition-all">提交信息</button>
+              </td>
+              <td style="text-align: center;">
+                <div class="relative inline-block mt-0">
+                  <button onmouseenter="showQRCode()" onmouseleave="hideQRCode()"
+                    class="flex items-center gap-2 px-6 py-2 bg-neutral-800 hover:bg-neutral-700 rounded-full transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                      <path
+                        d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                    </svg>
+                    联系我们
+                  </button>
+                  <!-- 二维码弹窗 -->
+                  <div id="qrCodePopup"
+                    class="absolute top-0 left-full ml-4 bg-white p-6 rounded-lg shadow-lg hidden opacity-0 transform translate-y-2 transition-all duration-300"
+                    style="width: 220px; height: 260px;">
+                    <img src="dae.jpg" alt="微信二维码" class="w-full h-450 object-cover">
+                    <p class="text-sm text-gray-800 mt-1">扫码添加微信客服</p>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </section>
+
+    <!-- 公司简介 -->
+    <section class="space-y-8 animate-fadein">
+      <h3 class="text-4xl font-bold text-center">你想得到，我们帮你实现</h3>
+      <p class="text-gray-400 max-w-2xl mx-auto leading-relaxed">
+        我们致力于让电商更简单，未来3年内扶持1000家产业带源头电商企业，完成电商全生态闭环建设，解决中小电商运营难、维护难、见效难的根本问题，促进电商行业全面健康且繁荣的发展。
+      </p>
+    </section>
+
+    <!-- 原modal结构修改点 -->
+    <div id="serviceModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl modal-content">
+        <div class="bg-neutral-800 rounded-xl p-8 relative">
+          <button onclick="closeModal()"
+            class="absolute top-4 right-4 text-2xl hover:text-blue-500 transition-transform">&times;</button>
+
+          <!-- 标题区域 -->
+          <div class="flex items-center gap-4 mb-6 pb-4 border-b border-neutral-700">
+            <h3 class="text-2xl font-bold" id="serviceTitle">服务名称</h3>
+            <span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-sm">VIP专属服务</span>
+          </div>
+
+          <!-- 主内容两列布局 -->
+          <div class="grid md:grid-cols-2 gap-6">
+            <!-- 左侧内容 -->
+            <div class="space-y-6">
+              <!-- 合作金额详情 -->
+              <div class="bg-neutral-700/30 p-4 rounded-lg">
+                <div class="flex items-center gap-2 mb-3">
+                  <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                  <h4 class="font-medium">合作金额</h4>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-blue-400 text-lg" id="servicePrice">价格范围</span>
+                  <button id="getQuoteBtn"
+                    class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg text-white mb-4 transition-colors">
+                    获取报价
+                  </button>
+                  <!-- 微信二维码弹窗 -->
+                  <div id="quoteQRPopup" class="absolute right-200 center">
+                    <img src="dae.jpg" alt="微信二维码">
+                    <p class="text-sm text-gray-800 mt-1 text-center">扫码获取报价</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 服务内容增强 -->
+              <div>
+                <div class="flex items-center gap-2 mb-4">
+                  <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <h4 class="font-medium">服务内容</h4>
+                </div>
+                <ul class="space-y-3" id="serviceContent">
+                  <!-- 示例内容 -->
+                  <li class="flex items-start gap-2">
+                    <span class="text-blue-400 mt-1">•</span>
+                    <span class="flex-1">服务项目说明文字</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 右侧内容 -->
+            <div class="space-y-6">
+              <!-- 效果保障可视化 -->
+              <div class="bg-neutral-700/30 p-4 rounded-lg">
+                <div class="flex items-center gap-2 mb-3">
+                  <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <h4 class="font-medium">效果保障</h4>
+                </div>
+                <div class="relative pt-2">
+                  <div class="flex mb-2 items-center justify-between">
+                    <div class="flex-1">
+                      <span id="serviceEffect" class="text-sm">效果描述文字</span>
+                    </div>
+                  </div>
+                  <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-neutral-700">
+                    <div style="width:75%"
+                      class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 代表客户展示 -->
+              <div>
+                <div class="flex items-center gap-2 mb-4">
+                  <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-               1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                  <h4 class="font-medium">代表客户</h4>
+                </div>
+                <div class="flex flex-wrap gap-2" id="serviceClients">
+                  <!-- 动态生成客户 -->
+                  <span class="bg-neutral-700 px-3 py-1 rounded-full text-sm">客户名称</span>
+                </div>
+                <div class="mt-4">
+                  <p class="text-neutral-400 text-sm">
+                    以上客户均为真实合作案例，欢迎联系我们了解更多详情。
+                  </p>
+                </div>
+              </div>
+
+              <!-- 行动按钮 -->
+              <div class="mt-6 text-center">
+                <button id="consultBtn"
+                  class="w-full bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg transition-all">立即咨询</button>
+                <p class="mt-2 text-neutral-400 text-sm">我们将在24小时内与您联系</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- 核心产品 -->
+    <section class="animate-fadein">
+      <h3 class="text-4xl font-bold text-center mb-12">全链路解决方案</h3>
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- 短视频代运营 -->
+        <div class="service-card bg-neutral-800 p-6 rounded-xl cursor-pointer" data-service="短视频代运营"
+          data-price="20,000-50,000元/月" data-content='["账号定位策略制定","周更8-12条创意视频","数据分析与优化","跨平台内容分发"]'
+          data-effect="6个月内实现百万粉丝增长" data-clients='["某国际餐饮品牌","国产美妆TOP5品牌","新能源汽车头部企业"]' onclick="showService(this)">
+          <div class="text-blue-500 text-2xl mb-4">🎬</div>
+          <h4 class="text-xl font-semibold mb-2">短视频代运营</h4>
+          <p class="text-gray-400">专业团队全程托管，周更10+优质视频</p>
+        </div>
+        <!-- 直播带货 -->
+        <div class="service-card bg-neutral-800 p-6 rounded-xl cursor-pointer" data-service="直播带货" data-price="坑位费+佣金分成"
+          data-content='["主播团队配置","直播间场景搭建","选品策略制定","数据实时监控"]' data-effect="平均ROI提升300%"
+          data-clients='["美妆品牌","家居品牌","食品饮料品牌"]' onclick="showService(this)">
+          <div class="text-blue-500 text-2xl mb-4">📸</div>
+          <h4 class="text-xl font-semibold mb-2">直播带货</h4>
+          <p class="text-gray-400">专业主播团队，提升转化率</p>
+        </div>
+        <!-- 信息流代投 -->
+        <div class="service-card bg-neutral-800 p-6 rounded-xl cursor-pointer" data-service="信息流代投"
+          data-price="消耗金额的15%+服务费" data-content='["开户与资质办理","定向策略优化","创意素材制作","ROI效果追踪"]' data-effect="获客成本降低30%+"
+          data-clients='["在线教育平台","医美机构","金融行业客户"]' onclick="showService(this)">
+          <div class="text-blue-500 text-2xl mb-4">📈</div>
+          <h4 class="text-xl font-semibold mb-2">信息流代投</h4>
+          <p class="text-gray-400">巨量引擎/腾讯广告精准投放</p>
+        </div>
+        <!-- 品牌网站建设 -->
+        <div class="service-card bg-neutral-800 p-6 rounded-xl cursor-pointer" data-service="品牌网站建设"
+          data-price="50,000元起" data-content='["品牌视觉设计","响应式开发","SEO优化","数据分析系统集成"]' data-effect="提升品牌形象与转化率"
+          data-clients='["某奢侈品牌","连锁餐饮集团","科技创业公司"]' onclick="showService(this)">
+          <div class="text-blue-500 text-2xl mb-4">🌐</div>
+          <h4 class="text-xl font-semibold mb-2">品牌网站建设</h4>
+          <p class="text-gray-400">
+            打造高端定制化品牌官网</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 案例展示 -->
+    <!--<section class="animate-fadein">
+      <h3 class="text-4xl font-bold text-center mb-12">成功案例</h3>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="relative group cursor-pointer">
+          <img src="巨量引擎.svg" class="rounded-xl shadow-xl group-hover:opacity-90 transition">
+          <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/80">
+            <h4 class="text-xl font-semibold">案例1</h4>
+          </div>
+        </div>
+        <div class="relative group cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1615996001375-c7ef13294436?auto=format&fit=crop&w=2071&q=80"
+            class="rounded-xl shadow-xl group-hover:opacity-90 transition">
+          <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/80">
+            <h4 class="text-xl font-semibold">案例2</h4>
+          </div>
+        </div>
+        <div class="relative group cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=2069&q=80"
+            class="rounded-xl shadow-xl group-hover:opacity-90 transition">
+          <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/80">
+            <h4 class="text-xl font-semibold">案例3</h4>
+          </div>
+        </div>
+        <div class="relative group cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1612296727716-d6b6a1d3f8e1?auto=format&fit=crop&w=2070&q=80"
+            class="rounded-xl shadow-xl group-hover:opacity-90 transition">
+          <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/80">
+            <h4 class="text-xl font-semibold">案例4</h4>
+          </div>
+        </div>
+      </div>
+    </section>-->
+  </main>
+
+  <!-- 侧边交互元素 -->
+  <div class="fixed right-4 bottom-8 space-y-4 z-50">
+    <button onclick="toggleService()"
+      class="bg-blue-600 w-12 h-12 rounded-full shadow-lg hover:bg-blue-700 transition flex items-center justify-center">
+      💬
+    </button>
+
+    <div id="serviceDialog" class="service-dialog absolute bottom-20 w-72 bg-neutral-800 rounded-xl p-4 shadow-xl">
+      <div class="flex justify-between mb-4">
+        <h5 class="font-semibold">在线客服</h5>
+        <button onclick="toggleService()" class="text-gray-400 hover:text-white">×</button>
+      </div>
+      <div class="space-y-3 text-sm">
+        <div class="bg-neutral-700 p-3 rounded-lg">您好，请问有什么可以帮您？</div>
+        <input type="text" placeholder="输入您的问题..." class="w-full bg-neutral-900 px-3 py-2 rounded">
+        <button class="w-full bg-blue-600 py-2 rounded">发送</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 表单提交
+    function handleSubmit(event) {
+      event.preventDefault();
+      alert('注册成功！');
+      event.target.reset();
+    }
+
+    // 显示二维码
+    function showQRCode() {
+      const popup = document.getElementById('qrCodePopup');
+      popup.classList.remove('hidden');
+      setTimeout(() => {
+        popup.classList.remove('opacity-0');
+        popup.classList.remove('translate-y-2');
+      }, 10);
+    }
+
+    // 隐藏二维码
+    function hideQRCode() {
+      const popup = document.getElementById('qrCodePopup');
+      popup.classList.add('opacity-0');
+      popup.classList.add('translate-y-2');
+      setTimeout(() => {
+        popup.classList.add('hidden');
+      }, 300);
+    }
+
+    // 视频缩放逻辑
+    const video = document.getElementById('scaling-video');
+    const mainContent = document.querySelector('main');
+    const maxScroll = 600;   // 最大滚动距离
+    const minScale = 0.5;    // 最小缩放比例
+    let lastScroll = 0;
+    let isScrolling = false;
+
+    function handleScroll() {
+      const scrollY = Math.min(window.scrollY, maxScroll);
+      const scale = 1 - (scrollY / maxScroll) * (1 - minScale);
+
+      // 应用缩放动画
+      video.style.transform = `scale(${scale})`;
+
+      // 动态调整内容间距
+      mainContent.style.marginTop = `${100 * scale}vh`;
+
+      lastScroll = scrollY;
+      isScrolling = false;
+    }
+
+    // 优化滚动事件
+    window.addEventListener('scroll', () => {
+      if (!isScrolling) {
+        window.requestAnimationFrame(handleScroll);
+        isScrolling = true;
+      }
+    });
+
+    // 禁用右键菜单
+    document.addEventListener('contextmenu', function (e) {
+      e.preventDefault();
+    });
+
+    // 服务详情弹窗逻辑
+    const serviceModal = document.getElementById('serviceModal');
+    const serviceTitle = document.getElementById('serviceTitle');
+    const servicePrice = document.getElementById('servicePrice');
+    const serviceContent = document.getElementById('serviceContent');
+    const serviceEffect = document.getElementById('serviceEffect');
+    const serviceClients = document.getElementById('serviceClients');
+
+    function showService(card) {
+      // 填充数据
+      serviceTitle.textContent = card.getAttribute('data-service');
+      servicePrice.textContent = card.getAttribute('data-price');
+      serviceEffect.textContent = card.getAttribute('data-effect');
+
+      // 动态生成服务内容
+      const contentList = JSON.parse(card.getAttribute('data-content'));
+      serviceContent.innerHTML = contentList.map(item => `<li>${item}</li>`).join('');
+
+      // 动态生成代表客户
+      const clientList = JSON.parse(card.getAttribute('data-clients'));
+      serviceClients.innerHTML = clientList.map(client => `<span class="bg-neutral-700 px-3 py-1 rounded-full">${client}</span>`).join('');
+
+      // 显示弹窗
+      serviceModal.style.display = 'block';
+    }
+
+    function closeModal() {
+      serviceModal.style.display = 'none';
+    }
+
+    // ========== 获取报价按钮交互 ==========
+    const getQuoteBtn = document.getElementById('getQuoteBtn');
+    const quoteQRPopup = document.getElementById('quoteQRPopup');
+
+    getQuoteBtn.addEventListener('mouseenter', () => {
+      quoteQRPopup.style.display = 'block';
+    });
+
+    getQuoteBtn.addEventListener('mouseleave', () => {
+      quoteQRPopup.style.display = 'none';
+    });
+
+    // ========== 立即咨询按钮交互 ==========
+    const consultBtn = document.getElementById('consultBtn');
+    /*const serviceDialog = document.getElementById('serviceDialog');*/
+
+    consultBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 550, behavior: 'smooth' });
+      serviceModal.style.display = 'none';
+    });
+
+    // 点击外部关闭弹窗
+    window.onclick = function (event) {
+      if (event.target === serviceModal) {
+        closeModal();
+      }
+    };
+
+    // 客服对话框逻辑
+    const serviceDialog = document.getElementById('serviceDialog');
+    function toggleService() {
+      if (serviceDialog.classList.contains('show')) {
+        serviceDialog.classList.remove('show');
+        setTimeout(() => {
+          serviceDialog.style.display = 'none';
+        }, 300);
+      } else {
+        serviceDialog.style.display = 'block';
+        setTimeout(() => {
+          serviceDialog.classList.add('show');
+        }, 10);
+      }
+    }
+
+    // 点击外部关闭客服对话框
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.service-dialog') && !e.target.closest('button[onclick*=toggleService]')) {
+        serviceDialog.classList.remove('show');
+        setTimeout(() => {
+          serviceDialog.style.display = 'none';
+        }, 300);
+      }
+    });
+  </script>
+</body>
+
+</html>

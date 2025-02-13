@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLSZ Group</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1920x1080');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .feature-card {
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex-shrink-0">
+          <img class="h-8" src="https://via.placeholder.com/150x50" alt="CLSZ Group Logo">
+        </div>
+        <div class="hidden md:flex space-x-8">
+          <a href="#" class="text-gray-700 hover:text-gray-900 text-sm font-medium">Home</a>
+          <a href="#" class="text-gray-700 hover:text-gray-900 text-sm font-medium">About Us</a>
+          <a href="#" class="text-gray-700 hover:text-gray-900 text-sm font-medium">Services</a>
+          <a href="#" class="text-gray-700 hover:text-gray-900 text-sm font-medium">Industries</a>
+          <a href="#" class="text-gray-700 hover:text-gray-900 text-sm font-medium">Contact</a>
+        </div>
+        <div class="md:hidden">
+          <button class="text-gray-700 hover:text-gray-900">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero flex items-center justify-center">
+    <div class="text-center text-white">
+      <h1 class="text-5xl font-bold mb-4">Innovative Solutions for a Digital World</h1>
+      <p class="text-xl mb-8">Transforming businesses through cutting-edge technology and strategic consulting.</p>
+      <a href="#"
+        class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full text-sm font-semibold transition duration-300">Learn
+        More</a>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center mb-12">Our Core Services</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="feature-card bg-white p-8 rounded-lg shadow-md text-center hover:shadow-lg">
+          <img src="https://via.placeholder.com/80" alt="Service Icon" class="mx-auto mb-6">
+          <h3 class="text-xl font-semibold mb-4">Digital Transformation</h3>
+          <p class="text-gray-600">We help businesses adapt to the digital age with innovative solutions.</p>
+        </div>
+        <div class="feature-card bg-white p-8 rounded-lg shadow-md text-center hover:shadow-lg">
+          <img src="https://via.placeholder.com/80" alt="Service Icon" class="mx-auto mb-6">
+          <h3 class="text-xl font-semibold mb-4">Strategic Consulting</h3>
+          <p class="text-gray-600">Our experts provide insights to drive growth and efficiency.</p>
+        </div>
+        <div class="feature-card bg-white p-8 rounded-lg shadow-md text-center hover:shadow-lg">
+          <img src="https://via.placeholder.com/80" alt="Service Icon" class="mx-auto mb-6">
+          <h3 class="text-xl font-semibold mb-4">Technology Integration</h3>
+          <p class="text-gray-600">Seamlessly integrate cutting-edge technology into your operations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-bold mb-6">About CLSZ Group</h2>
+          <p class="text-gray-600 mb-6">CLSZ Group is a leading provider of technology and consulting services,
+            dedicated to helping businesses achieve their full potential in the digital era. With a focus on innovation
+            and excellence, we deliver tailored solutions that drive growth and transformation.</p>
+          <a href="#"
+            class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full text-sm font-semibold transition duration-300">Learn
+            More</a>
+        </div>
+        <div>
+          <img src="https://via.placeholder.com/600x400" alt="About Us Image" class="rounded-lg">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center mb-12">Contact Us</h2>
+      <form class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+            <input type="text" id="name" name="name"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+            <input type="email" id="email" name="email"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          </div>
+        </div>
+        <div class="mt-6">
+          <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+          <textarea id="message" name="message" rows="4"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
+        </div>
+        <div class="mt-6">
+          <button type="submit"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full text-sm font-semibold transition duration-300">Send
+            Message</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-lg font-semibold mb-4">About Us</h3>
+          <p class="text-gray-400">CLSZ Group is a leading provider of technology and consulting services, dedicated to
+            helping businesses achieve their full potential in the digital era.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white">Home</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white">Services</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white">Industries</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+          <p class="text-gray-400">123 Business Street, Suite 456, New York, NY 10001</p>
+          <p class="text-gray-400">Phone: +1 (234) 567-8901</p>
+          <p class="text-gray-400">Email: info@clsz-group.com</p>
+        </div>
+      </div>
+      <div class="mt-8 border-t border-gray-700 pt-8 text-center">
+        <p class="text-gray-400">&copy; 2023 CLSZ Group. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
